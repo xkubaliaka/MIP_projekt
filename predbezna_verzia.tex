@@ -1,0 +1,89 @@
+% Metódy inžinierskej práce
+
+\documentclass[10pt,twoside,slovak,coursepaper]{article}
+
+\usepackage[slovak]{babel}
+\usepackage[IL2]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{hyperref} 
+
+\usepackage{cite}
+
+\pagestyle{headings}
+
+\title{Využitie umelej inteligencie pre zachytenie pohybu v hrách\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2022/23, vedenie: Ing. Zuzana Špitálová}}
+
+\author{Adam Kubaliak\\[2pt]
+	{\small Slovenská technická univerzita v Bratislave}\\
+	{\small Fakulta informatiky a informačných technológií}\\
+	{\small \texttt{xkubaliaka@stuba.sk}}\\
+	{\small \texttt{120832}}
+	}
+
+\date{\small 6. november 2022}
+
+\begin{document}
+
+\maketitle
+\clearpage
+
+\tableofcontents
+\clearpage
+
+\begin{abstract} %zmeniť na konci po dopísaní
+Hoci už existujú zariadenia, ktoré zaznamenávajú pohyb hráča, no na to, aby sa hráč mohol telesne zapájať do hry častokrát potrebuje nákladný hardvér. Avšak vývoj cloudových služieb a umelej inteligencie nám umožňuje zachytenie pohybu alebo hlasu hráča s použitím bežného zariadenia, ako napríklad web kamera zabudovaná v notebooku. Vďaka pokroku v oblasti umelej inteligencie môžeme scénu, ktorú sme snímali špeciálnou kamerou, snímať normálnou kamerou. K získaným obrázkom vieme získať želaný výsledok a to detegovanú podobu postavy hráča. S použitím neurónových sietí toto dokážeme s obyčajnou kamerou. 
+
+\ldots
+\end{abstract}
+\clearpage
+
+\section{Úvod}
+Tému využitie umelej inteligencie pre zachytenie pohybu v hrách som si zvolil pre to, pretože mnoho ľudí v súčasnosti, viac, ako kedykoľvek pred tým, trávi voľný čas hraním počítačových hier. Hráči sa spočiatku stretávali s negatívnym aspektom nedostatku pohybu, čo sa však zmenilo s príchodom virtuálnej reality a rôznych systémov zachytávajúcich pohyb hráča. Aj keď skĺbenie počítačových hier a pohybu môže znieť lákavo, ľudí častokrát odrádza práve vysoká cena týchto zariadení. No s použitím umelej inteligencie a všadeprítomných cloudových služieb, by sa toto negatívum mohlo stať minulosťou. Pokrok v tejto oblasti nám dáva príležitosť využiť umelú inteligenciu pre zlepšenie zážitku z hier. 
+
+
+S pomocou umelej inteligencie a obyčajnej kamery dokážeme snímať:
+\begin{itemize}
+\item pohyb 
+\item hlas
+\item výraz tváre
+
+\end{itemize}
+a ďalšie. Nevýhodou tohoto postupu však môže byť to, že na takúto prácu je potrebný výkonnejší hárdver. Tento nedostatok sa dá ošetriť s využitím cloudových systémov a jediná vec, ktorú by hráč potreboval je prístup na internet.
+
+V časti\ref{umela_inteligencia_1} je v krátkosti objasnená problematika umelej inteligencie a to, ako sa s vývojom zmenila a\ref{Neuronove_siete} je zameraná na Neurónové siete, ktoré sa môžu uplatniť v hernom priemysle.  
+
+Časť\ref{Cloudové_systémy} je zameraná na cloudové systémy ich fungovanie a osobitné uplatnenie pri hrách.\ref{Zaver} sa zameriava na prepojenie neurónových sietí s cloudovými systémami s účelom spomínanej detekcie pohybu hráča.
+
+\section{Umelá inteligencia} \label{Umela_inteligencia}
+Programátori sa už dlho snažia vytvoriť program, ktorý by sa vyrovnal operáciám v ľudskom mozgu. Najväčší problém bolo však všeobecné presvedčenie ľudí o tom, že človek je inteligentnejší ako počítač\cite{Kvasnička:NS}. Tento pohľad je ťažko poprieť, pretože napriek úsiliu sa nepodarilo vytvoriť programy (ani neurónové siete), ktoré by boli schopné učiť sa nie v umelom prostredí, ale v reálnom svete.
+\subsection{Vývoj umelej inteligencie} \label{umela_inteligencia_1}
+Spočiatku boli programy do najmenších detailov vytvorené človekom a z toho dôvodu sme vždy vedeli vyhľadať, aké rozhodnutie počítač urobil a následne rozhodnúť o jeho správnosti. Aspekt náhody v programoch nehral žiadnu úlohu. Výsledný program sa síce správal inteligentne, no jeho správanie bolo predurčené programátorom a program bol schopný riešiť iba to, na čo bol presne naprogramovaný, pri splnení podmienok. 
+
+Postupne sa začala meniť aj samotná definícia toho, čo sa považuje za umelú inteligenciu. Zo začiatku sa pod označením umelej inteligencie skrývalo všetko, čo dávalo bežnému používateľovi pocit toho, že daný program potrebuje vynaložiť väčšie množstvo inteligencie. Dobrým príkladom sú šachové programy. Hoci sú na vysokej úrovni, ich správanie je vopred určené človekom. Programy tohto typu sa zo začiatku považovali za umelú inteligenciu, no aktuálne sa už väčšinou za umelú inteligenciu nepovažujú. 
+\\*
+\\*
+Podobne ako prirodzená inteligencia, ani umelá nie je definovaná presným pojmom. Jej primárnymi vlastnosťqmi by mali byť:
+\begin{itemize}
+\item schopnosť spoznávať vzory s použitím metódy pokusu a omylu
+\item schopnosť učiť sa
+\end{itemize}
+
+Ľudia sa snažia vyvinúť programy, ktoré by vykonávali to, čo bežne človek nazýva inteligentným správaním sa.
+\subsection{Neurónové siete} \label{Neuronove_siete}
+\subsubsection{Definícia neurónových sietí} \label{Neuronove_siete_1}
+Neurónové siete sa v súčasnosti považujú za jednu z najlepších metód strojového učenia. Je to séria algoritmov, ktoré rozpoznávajú prvky v množine. Dosahujú tak procesom, ktorý napodobňuje fungovanie ľudského mozgu. V princípe fungujú tak, že sa vytvorí model. Ten následne prejde procesom trénovania na vysokom počte dát aby bol následne schopný predpovedať výsledok. Neurónové siete majú vysoké uplatnenie. Dobrým príkladom je v našom prípade ich využitie na detegovanie hráča snímaného kamerou.
+
+\subsubsection{Trénovanie neurónových sietí} \label{Neuronove_siete_2}
+Proces trénovania začína s nejakým náhodným nastavením parametrov neurónovej siete. Zo zbierky dát je následne vybratá nejaká vzorka a na nej sa spúšťa takto nastavenú neurónovú sieť. Výstup sa následne porovnáva so želaným výstupom a odvodíme zmenu parametrov. Proces opakujeme so zmenenými parametrami pokiaľ odchýlka medzi výstupmi a želanými výstupmi nie je prijateľne malá alebo kým nezaznamenáme zlepšenie výkonu siete. 
+	
+
+\section{Cloudové systémy} \label{Cloudové_systémy}
+
+\section{Spojenie umelej inteligencie a cloudových systémov} \label{Zaver}
+
+\bibliography{literatura}
+\bibliographystyle{plain}
+\end{document}
+
